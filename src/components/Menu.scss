@@ -1,0 +1,46 @@
+.Menu {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  position: absolute;
+  top: -150%;
+}
+
+.Menu-header {
+  padding: 5% 8%;
+}
+
+.Menu-section {
+  padding: 8%;
+  &-tab {
+    color: #484848;
+    padding: 7% 0;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+}
+
+.line {
+  border-top: 1px solid #ebebeb;
+  margin: 2% 0;
+}
+
+.go-down {
+  animation: go-down .3s ease-in-out;
+  top: 0;
+}
+
+.go-up {
+  animation: go-up .3s ease-in-out;
+  top: -150%;
+}
+
+@keyframes go-down {
+  from {top: -150%;}
+  to {top: 0;}
+}
+
+@keyframes go-up {
+  from {top: 0;}
+  to {top: -150%;}
+}
