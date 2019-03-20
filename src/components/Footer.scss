@@ -1,0 +1,15 @@
+.Footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8%;
+  img {
+    height: 40px;
+    margin-right: 3%;
+  }
+  > div {
+    color: #767676;
+    font-size: 0.9em;
+  }
+}
