@@ -1,0 +1,25 @@
+@import '_utils.scss';
+
+.Favorites {
+  width: 100vw;
+  font-family: 'NanumSquare';
+}
+  
+.Favorites-header {
+  padding: 5% 8%;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.Favorites-section {
+  width: 100%;
+  padding-bottom: 50px;
+  &-title {
+    padding: 8%;
+    // border: 1px solid red;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center;
+    color: #767676;
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+}
