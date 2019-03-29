@@ -1,0 +1,27 @@
+@import '_utils.scss';
+
+.Results {
+  width: 100vw;
+  font-family: 'NanumSquare';
+}
+
+.Results-header {
+  padding: 5% 8%;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.Results-section {
+  // width: 100%;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  padding: 8% 0 13% 0;
+  box-sizing: border-box;
+  text-align: center;
+  color: #767676;
+  font-size: 0.9em;
+}
