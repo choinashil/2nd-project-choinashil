@@ -29,7 +29,7 @@ class Login extends Component {
       const userName = user.displayName.split(' ')[0];
       const photoUrl = user.photoURL;
 
-      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/check`, {
+      const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/check`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ facebookId })
@@ -56,7 +56,7 @@ class Login extends Component {
 
   async _signUpAndsignIn(facebookId, userName, photoUrl) {
     try {
-      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/sign-up`, {
+      const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/sign-up`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -78,7 +78,7 @@ class Login extends Component {
 
   async _signIn(facebookId, userName, userId) {
     try {
-      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/login`, {
+      const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/login`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

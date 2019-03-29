@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     try {
     const token = localStorage.getItem('access_token');
 
-    const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/new-course`, {
+    const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/new-course`, {
       method: 'post',
       headers: { 
         'Authorization': `Bearer ${token}`,
@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     try {
       const token = localStorage.getItem('access_token');
       if (token) {
-        const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
+        const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
           method: 'get',
           headers: {'Authorization': `Bearer ${token}`}
         });
