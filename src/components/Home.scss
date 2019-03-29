@@ -1,9 +1,11 @@
+@import '_utils.scss';
+
 .Home {
   width: 100vw;
   height: 100vh;
   position: absolute;
   top: 0;
-  z-index: -1;
+  font-family: 'NanumSquare';
 }
 
 .Home-header {
@@ -16,39 +18,78 @@
   background-size: cover;
   box-sizing: border-box;
   padding: 5% 8%;
+  
   &-sentence {
     display: flex;
-    font-size: 1.75em;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.6em;
     font-weight: 700;
     color: #fff;
+    font-family: 'NanumSquare';
+    line-height: 1.3em;
   }
 }
 
 .Home-section {
-  height: 45vh;
-  padding: 5% 8%;
+  height: 42vh;
+  padding: 5% 8% 0 8%;
+  // border: 1px solid green;
   &-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    // align-items: center;
     height: 100%;
+    box-sizing: border-box;
+    // border: 1px solid salmon;
+    font-size: 0.75em;
+    font-weight: 800;
+    color: #484848;
     box-sizing: border-box;
     > div {
       padding: 5px 0;
+      // border: 1px solid yellow;
     }
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 0.75em;
-    font-weight: 800;
-    color: rgb(72, 72, 72);
-    box-sizing: border-box;
+    &-location {
+      > div {
+        display: flex;
+        justify-content: space-between;
+        > div:nth-child(1) {
+          display: flex;
+          .alert {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            font-weight: 400;
+            color: #c90b0b;
+            > i {
+              margin-right: 3px;
+            }
+            // border: 1px solid red;
+          }
+        }
+        > div:nth-child(2) {
+          // border: 1px solid green;
+          display: flex;
+          align-items: center;
+          color: #aaa;
+          cursor: pointer;
+          > i {
+            margin-right: 3px;
+            font-size: 0.6em;
+          }
+          margin-left: 10px;
+          font-weight: 400;
+        }
+      }
+    }
     input[type=text] {
       width: 100%;
       margin-top: 3%;
       padding: 8px;
       border: 1px solid #ebebeb;
       border-radius: 3px;
-      font-size: 1.6em;
+      font-size: 1.4em;
+      font-family: 'NanumSquare';
       font-weight: 400;
       color: #757575;
       outline: none;
@@ -61,7 +102,7 @@
     &-distance {
       display: flex;
       justify-content: space-around;
-      > div {
+      > label {
         display: flex;
         align-items: center;
         margin-top: 3%;
@@ -73,14 +114,22 @@
     input[type=radio] {
       margin-right: 5px;
     }
-    button {
-      padding: 4%;
-      border: none;
-      border-radius: 3px;
-      background-color: orange;
-      color: #fff;
-      font-size: 1.4em;
-      font-weight: 700;
+    &-button {
+      // border: 1px solid red;
+      display: flex;
+      justify-content: center;
+      button {
+        width: 22%;
+        padding: 4%;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 3px;
+        background-color: orange;
+        color: #fff;
+        font-size: 1.3em;
+        font-weight: 700;
+        font-family: 'NanumSquare';
+      }
     }
   }
 }

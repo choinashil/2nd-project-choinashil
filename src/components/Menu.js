@@ -4,16 +4,24 @@ import HeaderContainer from '../containers/HeaderContainer';
 import './Menu.scss';
 
 class Menu extends Component {
-  _onHomeMenuClick() {
+  constructor(props) {
+    super(props);
+    this._onMenuClick = this._onMenuClick.bind(this);
+    this._onLogoutMenuClick = this._onLogoutMenuClick.bind(this);
+  }
+
+  _onMenuClick() {
     const { closeMenuTab } = this.props; 
     closeMenuTab();
   }
 
   _onLogoutMenuClick() {
-    const { setUserInfo, closeMenuTab } = this.props;
+    const { closeMenuTab, resetUserInfo } = this.props;
+    alert('로그아웃 되었습니다!');
     localStorage.removeItem('access_token');
-    setUserInfo(null, null);
+    resetUserInfo();
     closeMenuTab();
+    // this.props.history.push('/');
   }
 
   _renderBlankLine() {
@@ -31,16 +39,20 @@ class Menu extends Component {
   _renderPrivateTab() {
     return (
       <Fragment>
-        <Link to="">
+        <Link to="/new-course" onClick={this._onMenuClick}>
+          <div className="Menu-section-tab">Add Course</div>
+        </Link>
+        {this._renderBlankLine()}
+        <Link to="/profile" onClick={this._onMenuClick}>
           <div className="Menu-section-tab">Profile</div>
         </Link>
-        <Link to="">
+        <Link to="/favorites" onClick={this._onMenuClick}>
           <div className="Menu-section-tab">Favorites</div>
         </Link>
         {this._renderBlankLine()}
         <div 
           className="Menu-section-tab"
-          onClick={this._onLogoutMenuClick.bind(this)}
+          onClick={this._onLogoutMenuClick}
         >
           Sign out
         </div>
@@ -58,7 +70,7 @@ class Menu extends Component {
           <HeaderContainer />
         </div>
         <section className="Menu-section">
-          <Link to="/" onClick={this._onHomeMenuClick.bind(this)}>
+          <Link to="/" onClick={this._onMenuClick}>
             <div className="Menu-section-tab">Home</div>
           </Link>
           {this._renderBlankLine()}

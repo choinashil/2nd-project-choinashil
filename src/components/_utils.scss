@@ -1,24 +1,4 @@
 /* fonts */ 
-// @import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+@font-face { font-family: 'SeoulHangangM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulHangangM.woff') format('woff'); font-weight: normal; font-style: normal; }
 
-/* variables */
-
-$border: 1px solid rgba(0, 0, 0, .4);
-
-$bk0: rgba(0, 0, 0, 0);
-$bk1: rgba(0, 0, 0, .1);
-$bk2: rgba(0, 0, 0, .2);
-$bk3: rgba(0, 0, 0, .3);
-$bk4: rgba(0, 0, 0, .4);
-$bk5: rgba(0, 0, 0, .5);
-$bk6: rgba(0, 0, 0, .6);
-$bk7: rgba(0, 0, 0, .7);
-$bk8: rgba(0, 0, 0, .8);
-$bk9: rgba(0, 0, 0, .9);
-$bk95: rgba(0, 0, 0, .95);
-
-$wh40: rgba(255, 255, 255, .4);
-$wh60: rgba(255, 255, 255, .6);
-$wh75: rgba(255, 255, 255, .75);
-$wh90: rgba(255, 255, 255, .9);
-$wh95: rgba(255, 255, 255, .95);
+@font-face { font-family: 'BRBA_B'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff'); font-weight: normal; font-style: normal; }

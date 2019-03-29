@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { closeMenuTab, setUserInfo } from '../actions';
+import { closeMenuTab, resetUserInfo } from '../actions';
 import Menu from '../components/Menu';
 
 const mapStateToProps = state => {
@@ -7,11 +7,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  setUserInfo: (userId, userName) => {
-    dispatch(setUserInfo(userId, userName));
-  },
   closeMenuTab: () => {
     dispatch(closeMenuTab());
+  },
+  resetUserInfo: () => {
+    dispatch(resetUserInfo());
   }
 });
 
