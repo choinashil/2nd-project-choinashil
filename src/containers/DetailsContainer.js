@@ -12,10 +12,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // },
   changeFavoritesData: async (userId, courseId) => {
     try {
-      const ip = '192.168.0.47'; // 바코
+      // const ip = '192.168.0.47'; // 바코
 
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://${ip}:5000/api/users/${userId}/courses/${courseId}/like`, {
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/courses/${courseId}/like`, {
         method: 'get',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getCourseDetails: async courseId => {
     dispatch(isFetching(true));
     try {
-      const ip = '192.168.0.47'; // 바코
-      const res = await fetch(`http://${ip}:5000/api/courses/${courseId}/details`);
+      // const ip = '192.168.0.47'; // 바코
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/courses/${courseId}/details`);
       const json = await res.json();
       // console.log('result', json);
       const { courseInfo } = json;

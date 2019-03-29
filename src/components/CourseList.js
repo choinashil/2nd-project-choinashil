@@ -11,15 +11,11 @@ class CourseList extends Component {
     const { userId } = this.props.userInfo;
     const { page } = this.props.display;
 
-    // if (page === 'Results') {
     if (userId) {
       toggleLikes(page, userId, courseId);
     } else {
       alert('즐겨찾기는 로그인 후 이용가능합니다!');
     }
-    // } else if (page === 'Favorites') {
-      // toggleLikes(page, userId, courseId);
-    // }
   }
 
   _checkFavorites(likeIds) {

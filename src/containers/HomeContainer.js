@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { isFetching, saveResultsList, setBaseLatLng, setUserInfo, setUserAddress, setUserLocation, closeMenuTab } from '../actions';
 import Home from '../components/Home';
+import { googleApiKey } from '../config/googleApiKey';
+
 // import { ip } from '../lib/ip';
-const ip = '192.168.0.47'; // 바코
+// const ip = '192.168.0.47'; // 바코
 
 
 const mapStateToProps = state => {
@@ -14,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(closeMenuTab());
   },
   getCurrentAddress: async (lat, lng) => {
-    const googleApiKey = 'AIzaSyChzbdV01n82aAAEsf2dvXuMnIIaVforYs';
+    // const googleApiKey = 'AIzaSyChzbdV01n82aAAEsf2dvXuMnIIaVforYs';
     try {
       const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${googleApiKey}`);
       const json = await res.json();

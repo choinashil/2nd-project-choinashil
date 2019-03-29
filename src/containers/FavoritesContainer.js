@@ -10,10 +10,10 @@ const mapDispatchToProps = dispatch => ({
   getUserFavorites: async userId => {
     try {
       dispatch(isFetching(true));
-      const ip = '192.168.0.47'; // 바코
+      // const ip = '192.168.0.47'; // 바코
 
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://${ip}:5000/api/users/${userId}/favorites`, {
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/favorites`, {
         method: 'get',
         headers: { 'Authorization': `Bearer ${token}` }
       });

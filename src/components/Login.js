@@ -2,13 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId } from '../config';
+import { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId } from '../config/firebaseApiKey';
 import './Login.scss';
-// import { ip } from '../lib/ip';
-
-
-// const ip = '172.20.10.3'; 
-const ip = '192.168.0.47';
 
 class Login extends Component {
   async _checkUserInDB() {
@@ -34,8 +29,7 @@ class Login extends Component {
       const userName = user.displayName.split(' ')[0];
       const photoUrl = user.photoURL;
 
-      const ip = '192.168.0.47';
-      const res = await fetch(`http://${ip}:5000/api/auth/check`, {
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/check`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ facebookId })
@@ -62,8 +56,7 @@ class Login extends Component {
 
   async _signUpAndsignIn(facebookId, userName, photoUrl) {
     try {
-      const ip = '192.168.0.47';
-      const res = await fetch(`http://${ip}:5000/api/auth/sign-up`, {
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/sign-up`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -85,8 +78,7 @@ class Login extends Component {
 
   async _signIn(facebookId, userName, userId) {
     try {
-      const ip = '192.168.0.47';
-      const res = await fetch(`http://${ip}:5000/api/auth/login`, {
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/login`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './InputMap.scss';
-import { Map } from '../lib/Maps';
-import { ACCESS_TOKEN } from '../config/mapboxToken';
+// import { Map } from '../lib/Maps';
+// import { ACCESS_TOKEN } from '../config/mapboxToken';
 
 class ResultMap extends Component {
   constructor(props) {

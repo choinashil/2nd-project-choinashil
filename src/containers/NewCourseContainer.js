@@ -24,11 +24,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     
     try {
     const token = localStorage.getItem('access_token');
-    const ip = '192.168.0.47';
+    // const ip = '192.168.0.47';
     console.log('---', newCourseInfo, token);
 
     console.log('ip', ip);
-    const res = await fetch(`http://${ip}:5000/api/users/${userId}/new-course`, {
+    const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/new-course`, {
       method: 'post',
       headers: { 
         'Authorization': `Bearer ${token}`,
@@ -58,11 +58,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   verifyToken: async () => {
     // const ip = '192.168.200.108';
-    const ip = '192.168.0.47'; // 바코
+    // const ip = '192.168.0.47'; // 바코
     try {
       const token = localStorage.getItem('access_token');
       if (token) {
-        const res = await fetch(`http://${ip}:5000/api/auth/verify`, {
+        const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
           method: 'get',
           headers: {'Authorization': `Bearer ${token}`}
         });

@@ -75,12 +75,8 @@ class Home extends Component {
     this.input.current.select();
   }
 
-//   https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,
-// +Mountain+View,+CA&key=YOUR_API_KEY
-
   _onAddressChange(e) {
     if (!e.target.value) {
-      // this.setState({ latLon: [] });
       this.setState({
         lat: 0,
         lng: 0

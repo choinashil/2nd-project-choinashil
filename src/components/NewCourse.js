@@ -4,8 +4,8 @@ import HeaderContainer from '../containers/HeaderContainer';
 import InputMapContainer from '../containers/InputMapContainer';
 import './NewCourse.scss';
 
-const { mapboxgl } = global;
-mapboxgl.accessToken = 'pk.eyJ1IjoibmFzaGlsIiwiYSI6ImNqdGhieGNobzJjeXI0NG9icWl0ejNiaTEifQ.8pUKf_VC-XZNb9tcRxJAsQ';
+// const { mapboxgl } = global;
+// mapboxgl.accessToken = 'pk.eyJ1IjoibmFzaGlsIiwiYSI6ImNqdGhieGNobzJjeXI0NG9icWl0ejNiaTEifQ.8pUKf_VC-XZNb9tcRxJAsQ';
 
 const { google } = global;
 

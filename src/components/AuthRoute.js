@@ -34,8 +34,7 @@ export default function(ComposedComponent) {
   const mapDispatchToProps = dispatch => ({
     getUserInfo: async token => {
       try {
-        const ip = '192.168.0.47'; 
-        const res = await fetch(`http://${ip}:5000/api/auth/verify`, {
+        const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
           method: 'get',
           headers: {'Authorization': `Bearer ${token}`}
         });
