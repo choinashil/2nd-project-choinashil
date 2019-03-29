@@ -1,9 +1,9 @@
-import { ACCESS_TOKEN } from '../config/mapboxToken';
+import { mapboxAccessToken } from '../config/mapboxToken';
 
 export const Map = (longitude, latitude, distance, getDistance, getCoordinates) => {
     const { mapboxgl, turf } = global;
 
-    mapboxgl.accessToken = ACCESS_TOKEN;
+    mapboxgl.accessToken = mapboxAccessToken;
 
     const map = new mapboxgl.Map({
       container: 'map',
