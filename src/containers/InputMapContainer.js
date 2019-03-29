@@ -1,11 +1,8 @@
 import { connect } from 'react-redux';
 import { setCoordinates, setDistance } from '../actions';
 import InputMap from '../components/InputMap';
-import { combineReducers } from 'redux';
 
 const mapStateToProps = state => {
-  // return { ...state, ...ownProps}; 
-  // ownProps.history
   return state;
 };
 

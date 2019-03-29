@@ -1,11 +1,7 @@
 import { connect } from 'react-redux';
-import { isFetching, saveResultsList, setBaseLatLng, setUserInfo, setUserAddress, setUserLocation, closeMenuTab } from '../actions';
+import { setUserAddress, setUserLocation, closeMenuTab } from '../actions';
 import Home from '../components/Home';
 import { googleApiKey } from '../config/googleApiKey';
-
-// import { ip } from '../lib/ip';
-// const ip = '192.168.0.47'; // 바코
-
 
 const mapStateToProps = state => {
   return state;
@@ -16,14 +12,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(closeMenuTab());
   },
   getCurrentAddress: async (lat, lng) => {
-    // const googleApiKey = 'AIzaSyChzbdV01n82aAAEsf2dvXuMnIIaVforYs';
     try {
       const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${googleApiKey}`);
       const json = await res.json();
-      console.log('current location', json);
       const address = json.results[0].formatted_address;
-      
-      console.log('address', address);
       dispatch(setUserAddress(address));
       return address;
     } catch (err) {
@@ -43,16 +35,12 @@ const mapDispatchToProps = dispatch => ({
 
     function geoError(error) {
       if (error.code === 0) {
-        // unknown error
         alert('unknown error');
       } else if (error.code === 1) {
-        // they said no
         alert('user said no');
       } else if (error.code === 2) {
-        // position unavailable
         alert('position unavailable');
       } else if (error.code === 3) {
-        // timeout
         alert('time out');
       }
     }

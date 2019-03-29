@@ -2,20 +2,15 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import { isFetching, resetCourseHistory, setNewLatLng, setUserInfo, closeMenuTab } from '../actions';
 import NewCourse from '../components/NewCourse';
-// import { ip } from '../lib/ip';
 
 const mapStateToProps = state => {
   return state;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-
   isFetching: boolean => {
     dispatch(isFetching(boolean));
   },
-//   setUserInfo: (userId, userName) => {
-//     dispatch(setUserInfo(userId, userName));
-//   },
   closeMenuTab: () => {
     dispatch(closeMenuTab());
   },
@@ -24,10 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     
     try {
     const token = localStorage.getItem('access_token');
-    // const ip = '192.168.0.47';
-    console.log('---', newCourseInfo, token);
 
-    console.log('ip', ip);
     const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/new-course`, {
       method: 'post',
       headers: { 
@@ -43,7 +35,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(isFetching(false));
 
     return json.message;
-    // dispatch(push('/'));
 
 
     } catch (err) {
@@ -57,8 +48,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(setNewLatLng(lat, lng));
   },
   verifyToken: async () => {
-    // const ip = '192.168.200.108';
-    // const ip = '192.168.0.47'; // 바코
     try {
       const token = localStorage.getItem('access_token');
       if (token) {

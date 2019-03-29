@@ -10,7 +10,6 @@ const mapDispatchToProps = dispatch => ({
   searchCourses: async (lat, lng, distance) => {
     try { 
       dispatch(isFetching(true));
-      // const ip = '192.168.0.47'; // 바코
       const api = `http://running-course-app.eu-west-1.elasticbeanstalk.com/api/courses?`;
       const searchLatLng = `lat=${lat}&lng=${lng}`;
       const searchDistance = `distance=${distance}`;
