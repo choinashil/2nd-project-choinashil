@@ -1,70 +1,127 @@
-# 2nd-project-choinashil
+# [Running Course](nashu.me)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+Running Course App은 사용자가 추천하는 러닝 코스를 등록하고, 위치 기반으로 러닝 코스를 검색할 수 있는 어플리케이션입니다.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 모바일에서의 사용을 권장합니다.
+- Running Course App은 Facebook API를 사용했습니다.
+- Facebook 가입이 선행되어야 합니다.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Client
 
-### `npm run eject`
+```javascript
+git clone https://github.com/choinashil/2nd-project-choinashil.git
+cd 2nd-project-choinashil
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Server
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+git clone https://github.com/choinashil/2nd-project-server-choinashil.git
+cd 2nd-project-choinashil-server
+npm install
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Firebase Social Login (Facebook)
+- JSON Web Token Authentication
+- 사용자 기기의 위치 사용
+- Mapbox 위에 코스 그리기
+- 코스 세부정보 공유
+- Google API를 이용한 검색 위치 주변 반경 내 코스 불러오기
+- 로그인시 코스 즐겨찾기 제공
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Client-Side Specification
 
-### Analyzing the Bundle Size
+- ES2015+
+- React 
+- React Router
+- Redux
+- Firebase Authentication
+- Scss
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Server-Side Specification
 
-### Advanced Configuration
+- Node.js
+- Express
+- ES2015+ 
+- JSON Web Token Authentication
+- MongoDB
+- Mongoose
+- Atlas
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+  
 
-### Deployment
+## Test 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- PropTypes
+- Reducer Unit Test (Jest)
+- Component Unit Test (Jest, Enzyme)
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Deployment & Continuous Integration
+
+### Client
+
+- Netlify CI를 통한 배포 자동화
+
+### Server
+
+- CircleCI를 통한 배포 자동화
+
+
+
+## Project Control
+
+- Git Branch 기반 개발 진행
+- Trello를 이용한 Task Management
+
+
+
+## Version Control
+
+- Web, Server의 독립적인 관리를 위한 GIT Repo 구분 
+
+
+
+## Challenges
+
+- Mapbox, Google Map의 Vanilla Javascript code를 React Lifecyle에 맞게 변형하는 부분이 어려웠습니다. 기초적인 Javascript와 React에 대한 이해가 더 필요하다고 생각했습니다.
+- 배포, 자동화 및 HTTPS 인증서 설정하는 부분에서 어려움이 있었습니다. 아직 완벽하게 구현되지 않은 부분은 추가적으로 보완할 예정입니다.
+
+
+
+## Things To Do 
+
+- 검색옵션에 반경 추가
+- Detail Page에서 Start, End 지점 표시
+- 댓글 기능
+- 검색결과 페이지에서 추가 검색 가능하도록 디자인 수정
+
+
+
+### Sincere Thanks
+
+[Ken Huh](https://github.com/Ken123777) / Vanilla Coding
