@@ -1,20 +1,17 @@
 {
-  "name": "2nd-project-choinashil",
+  "name": "RunMate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "firebase": "^5.9.0",
-    "mapbox-gl": "^0.53.1",
-    "node-sass": "^4.11.0",
-    "prop-types": "^15.7.2",
     "query-string": "^6.4.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "redux": "^4.0.1",
-    "redux-logger": "^3.0.6"
+    "react-spinners": "^0.5.3",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,6 +31,9 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "identity-obj-proxy": "^3.0.0"
+    "identity-obj-proxy": "^3.0.0",
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
+    "redux-mock-store": "^1.5.3"
   }
 }
