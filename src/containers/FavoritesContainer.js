@@ -3,7 +3,10 @@ import { isFetching, resetBaseLatLng, setPage, setUserFavorites } from '../actio
 import Favorites from '../components/Favorites';
 
 const mapStateToProps = state => {
-  return state;
+  const { isFetching } = state.display;
+  const { userId } = state.userInfo;
+
+  return { isFetching, userId };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -12,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
       dispatch(isFetching(true));
 
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/favorites`, {
+      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/favorites`, {
         method: 'get',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -20,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
       const { favorites } = json;
 
       dispatch(setUserFavorites(favorites));
+      dispatch(isFetching(false));
 
     } catch (err) {
       console.log('err', err);

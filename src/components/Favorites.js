@@ -1,37 +1,35 @@
 import React, { Component, Fragment } from 'react';
-// import { BrowserRouter as Router, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import HeaderContainer from '../containers/HeaderContainer';
 import MenuContainer from '../containers/MenuContainer';
 import CourseListContainer from '../containers/CourseListContainer';
+import Indicator from './Indicator';
 import './Favorites.scss';
 
 class Favorites extends Component {
   componentDidMount() {
-    // console.log('favorites did mount', userId);
-    const { getUserFavorites, resetBaseLatLng, setPage } = this.props;
-    const { userId } = this.props.userInfo;
-    console.log('favorites did mount', userId);
-
-    // getUserFavorites(userId);
+    const { getUserFavorites, resetBaseLatLng, setPage, userId } = this.props;
     resetBaseLatLng();
     setPage('Favorites');
-  }
 
-  componentDidUpdate() {
-    const { getUserFavorites } = this.props;
-    const { userId } = this.props.userInfo;
-    let count = 0;
-    if (userId && count === 0) {
+    if (userId) {
       getUserFavorites(userId);
-      count++;
     }
   }
-  
+
+  componentDidUpdate(prevProps) {
+    const { getUserFavorites, userId } = this.props;
+    const initUserId = prevProps.userId;
+
+    if(initUserId !== userId && userId) {
+      getUserFavorites(userId);
+    }
+  }
 
   render() {
-    const { history } = this.props;
+    const { history, isFetching } = this.props;
 
-    return ( 
+    return (
       <Fragment>
         <MenuContainer />
         <div className="Favorites">
@@ -39,13 +37,27 @@ class Favorites extends Component {
             <HeaderContainer />
           </div>
           <section className="Favorites-section">
-            <div className="Favorites-section-title">Favorites</div>
-            <CourseListContainer history={history} />
+            { isFetching ?
+              <Indicator /> :
+              <Fragment>
+                <div className="Favorites-section-title">Favorites</div>
+                <CourseListContainer history={history} />
+              </Fragment>
+            }
           </section>
         </div>
       </Fragment>
     );
   }
 }
+
+Favorites.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  userId: PropTypes.string.isRequired,
+  getUserFavorites: PropTypes.func.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
+  resetBaseLatLng: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired
+};
 
 export default Favorites;

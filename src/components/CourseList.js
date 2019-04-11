@@ -1,16 +1,31 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import './CourseList.scss';
 
-class CourseList extends Component {  
-  _onListClick(courseId) {
-    this.props.history.push(`/courses/${courseId}`);
+class CourseList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      noResultMessage: ''
+    };
+  }
+
+  componentDidMount() {
+    const { page } = this.props;
+    if (page === 'Results') {
+      this.setState({ noResultMessage: '검색결과가 없습니다' });
+    } else if (page === 'Favorites') {
+      this.setState({ noResultMessage: '저장해둔 코스가 없습니다' });
+    }
+  }
+
+  _checkFavorites(likeIds) {
+    const { userId } = this.props;
+    return likeIds.includes(userId) ? true : false;
   }
 
   _onHeartClick(courseId) {
-    const { toggleLikes } = this.props; 
-    const { userId } = this.props.userInfo;
-    const { page } = this.props.display;
-
+    const { page, userId, toggleLikes } = this.props;
     if (userId) {
       toggleLikes(page, userId, courseId);
     } else {
@@ -18,17 +33,14 @@ class CourseList extends Component {
     }
   }
 
-  _checkFavorites(likeIds) {
-    const { userId } = this.props.userInfo;
-    return likeIds.includes(userId) ? true : false;
+  _onListClick(courseId) {
+    this.props.history.push(`/courses/${courseId}`);
   }
 
   render() {
-    console.log('courselist render', this.props);
-    const { page } = this.props.display;
-    const { results } = this.props.results;
-    const { favorites } = this.props.userInfo;
-    
+    const { favorites, page, results } = this.props;
+    const { noResultMessage } = this.state;
+
     let courseList = [];
 
     if (page === 'Results') {
@@ -37,31 +49,25 @@ class CourseList extends Component {
       courseList = favorites;
     }
 
-    console.log('courselist', courseList);
-   
-    return ( 
+    return (
       <Fragment>
-        {
+        { courseList.length ?
           courseList.map(list => {
             const { _id, title, userName, distance, locker, restroom, gourmet, likeIds } = list;
-            const thumbnail = {
-              backgroundImage: 'url(https://i-h2.pinimg.com/564x/0c/90/81/0c90813e13d13883a66354bb2d60a8dd.jpg)'
-            };
 
             return (
-              <div 
+              <div
                 key={_id}
                 className="Courselist"
-              > 
+              >
                 <div className="Courselist-wrapper">
-                  <div 
+                  <div
                     className="Courselist-img"
                     onClick={this._onListClick.bind(this, _id)}
                   >
-                    <div style={thumbnail} />
+                    <img src={require('../lib/icon.png')} alt="icon" />
                   </div>
-
-                  <div 
+                  <div
                     className="Courselist-description"
                     onClick={this._onListClick.bind(this, _id)}
                   >
@@ -76,7 +82,6 @@ class CourseList extends Component {
                       </div>
                     </div>
                   </div>
-
                   <div className="Courselist-like">
                     <div onClick={this._onHeartClick.bind(this, _id)}>
                       {this._checkFavorites(likeIds) ?
@@ -90,10 +95,23 @@ class CourseList extends Component {
               </div>
             );
           })
+          : <div className="Courselist-no-result">
+              <div>
+                {noResultMessage}
+              </div>
+            </div>
         }
       </Fragment>
     );
   }
 }
+
+CourseList.propTypes = {
+  page: PropTypes.string.isRequired,
+  results: PropTypes.arrayOf(PropTypes.object),
+  favorites: PropTypes.arrayOf(PropTypes.object),
+  userId: PropTypes.string.isRequired,
+  toggleLikes: PropTypes.func.isRequired
+};
 
 export default CourseList;

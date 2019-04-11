@@ -3,13 +3,13 @@ import { setCoordinates, setDistance } from '../actions';
 import InputMap from '../components/InputMap';
 
 const mapStateToProps = state => {
-  return state;
+  const { course, userInfo } = state;
+  return { course, userInfo };
 };
 
 const mapDispatchToProps = dispatch => ({
   getDistance: distance => {
-    console.log('--distance', distance);
-    const editedDistance = Number(distance).toFixed(2);
+    const editedDistance = parseFloat(Number(distance).toFixed(2));
     dispatch(setDistance(editedDistance));
   },
   getCoordinates: features => {

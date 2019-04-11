@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import HeaderContainer from '../containers/HeaderContainer';
 import './Menu.scss';
 
@@ -11,7 +12,7 @@ class Menu extends Component {
   }
 
   _onMenuClick() {
-    const { closeMenuTab } = this.props; 
+    const { closeMenuTab } = this.props;
     closeMenuTab();
   }
 
@@ -21,7 +22,6 @@ class Menu extends Component {
     localStorage.removeItem('access_token');
     resetUserInfo();
     closeMenuTab();
-    // this.props.history.push('/');
   }
 
   _renderBlankLine() {
@@ -50,7 +50,7 @@ class Menu extends Component {
           <div className="Menu-section-tab">Favorites</div>
         </Link>
         {this._renderBlankLine()}
-        <div 
+        <div
           className="Menu-section-tab"
           onClick={this._onLogoutMenuClick}
         >
@@ -61,8 +61,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { menuTabOpened } = this.props.display;
-    const { userId } = this.props.userInfo;
+    const { menuTabOpened, userId } = this.props;
 
     return (
       <div className={menuTabOpened ? "Menu go-down" : "Menu go-up"}>
@@ -80,5 +79,12 @@ class Menu extends Component {
     );
   }
 }
+
+Menu.propTypes = {
+  menuTabOpened: PropTypes.bool.isRequired,
+  userId: PropTypes.string.isRequired,
+  closeMenuTab: PropTypes.func.isRequired,
+  resetUserInfo: PropTypes.func.isRequired
+};
 
 export default Menu;

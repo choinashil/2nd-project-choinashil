@@ -1,16 +1,19 @@
 import { connect } from 'react-redux';
-import { isFetching, setBaseLatLng, saveResultsList, setPage } from '../actions';
+import { isFetching, saveResultsList, setBaseLatLng, setPage } from '../actions';
 import Results from '../components/Results';
 
 const mapStateToProps = state => {
-  return state;
+  const { isFetching } = state.display;
+  const { results } = state.results;
+
+  return { isFetching, results };
 };
 
 const mapDispatchToProps = dispatch => ({
   searchCourses: async (lat, lng, distance) => {
-    try { 
+    try {
       dispatch(isFetching(true));
-      const api = `https://running-course-app.eu-west-1.elasticbeanstalk.com/api/courses?`;
+      const api = 'http://running-course-app.eu-west-1.elasticbeanstalk.com/api/courses?';
       const searchLatLng = `lat=${lat}&lng=${lng}`;
       const searchDistance = `distance=${distance}`;
       let res;

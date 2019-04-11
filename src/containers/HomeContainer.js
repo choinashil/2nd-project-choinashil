@@ -1,27 +1,13 @@
 import { connect } from 'react-redux';
-import { setUserAddress, setUserLocation, closeMenuTab } from '../actions';
+import { setUserAddress, setSearchedAddress, setUserLocation, closeMenuTab } from '../actions';
 import Home from '../components/Home';
-import { googleApiKey } from '../config/googleApiKey';
 
 const mapStateToProps = state => {
-  return state;
+  const { address, lat, lng, userName } = state.userInfo;
+  return { address, lat, lng, userName };
 };
 
 const mapDispatchToProps = dispatch => ({
-  closeMenuTab: () => {
-    dispatch(closeMenuTab());
-  },
-  getCurrentAddress: async (lat, lng) => {
-    try {
-      const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${googleApiKey}`);
-      const json = await res.json();
-      const address = json.results[0].formatted_address;
-      dispatch(setUserAddress(address));
-      return address;
-    } catch (err) {
-      console.log(err);
-    }
-  },
   askUserLocation: () => {
     const geoOptions = {
       maximumAge: 5 * 60 * 1000,
@@ -29,7 +15,6 @@ const mapDispatchToProps = dispatch => ({
 
     function geoSuccess(coordinates) {
       const { latitude, longitude } = coordinates.coords;
-      console.log('Found coordinates: ', latitude, longitude);
       dispatch(setUserLocation(latitude, longitude));
     }
 
@@ -51,6 +36,23 @@ const mapDispatchToProps = dispatch => ({
     else {
       console.log('Geolocation is not supported for this Browser/OS.');
     }
+  },
+  closeMenuTab: () => {
+    dispatch(closeMenuTab());
+  },
+  getCurrentAddress: async (lat, lng) => {
+    try {
+      const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyChzbdV01n82aAAEsf2dvXuMnIIaVforYs`);
+      const json = await res.json();
+      const address = json.results[0].formatted_address;
+      dispatch(setUserAddress(address));
+      return address;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  setSearchedAddress: address => {
+    dispatch(setSearchedAddress(address));
   }
 });
 

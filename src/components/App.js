@@ -22,7 +22,7 @@ class App extends Component {
           <Route path="/profile" component={PrivateRoute(ProfileContainer)} />
           <Route path="/favorites" component={PrivateRoute(FavoritesContainer)} />
           <Route path="/results" component={AuthRoute(ResultsContainer)} />
-          <Route exact path="/courses/:course_id" component={AuthRoute(DetailsContainer)} />
+          <Route path="/courses/:course_id" component={AuthRoute(DetailsContainer)} />
           <Route component={NotFound} />
         </Switch>
       </Router>

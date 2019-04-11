@@ -3,7 +3,9 @@ import { closeMenuTab, resetUserInfo } from '../actions';
 import Menu from '../components/Menu';
 
 const mapStateToProps = state => {
-  return state;
+  const { menuTabOpened } = state.display;
+  const { userId } = state.userInfo;
+  return { menuTabOpened, userId };
 };
 
 const mapDispatchToProps = dispatch => ({

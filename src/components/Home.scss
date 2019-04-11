@@ -18,36 +18,31 @@
   background-size: cover;
   box-sizing: border-box;
   padding: 5% 8%;
-  
   &-sentence {
     display: flex;
+    line-height: 1.3em;
+    font-family: 'NanumSquare';
     font-size: 1.6em;
     font-weight: 700;
     color: #fff;
-    font-family: 'NanumSquare';
-    line-height: 1.3em;
   }
 }
 
 .Home-section {
   height: 42vh;
   padding: 5% 8% 0 8%;
-  // border: 1px solid green;
   &-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    // align-items: center;
     height: 100%;
     box-sizing: border-box;
-    // border: 1px solid salmon;
     font-size: 0.75em;
     font-weight: 800;
     color: #484848;
     box-sizing: border-box;
     > div {
       padding: 5px 0;
-      // border: 1px solid yellow;
     }
     &-location {
       > div {
@@ -64,11 +59,9 @@
             > i {
               margin-right: 3px;
             }
-            // border: 1px solid red;
           }
         }
         > div:nth-child(2) {
-          // border: 1px solid green;
           display: flex;
           align-items: center;
           color: #aaa;
@@ -115,7 +108,6 @@
       margin-right: 5px;
     }
     &-button {
-      // border: 1px solid red;
       display: flex;
       justify-content: center;
       button {
@@ -124,7 +116,7 @@
         box-sizing: border-box;
         border: none;
         border-radius: 3px;
-        background-color: orange;
+        background-color: #f97a35;
         color: #fff;
         font-size: 1.3em;
         font-weight: 700;

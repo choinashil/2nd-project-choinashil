@@ -1,25 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from "react-router-dom";
+import { setUserInfo } from '../actions';
 
 export default function(ComposedComponent) {
   class PrivateRoute extends Component {
-    render() {
-      const token = localStorage.getItem('access_token');
+    componentDidMount() {
+      this._checkTokenAndValidate();
+    }
 
-      console.log('private route userid', this.props.userId);
-      if (!token) {
-        return <Redirect to='/' />;
+    async _checkTokenAndValidate() {
+      const { getUserInfo, history } = this.props;
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        await getUserInfo(token);
+      } else {
+        history.push('/');
       }
+    }
+
+    render() {
       return <ComposedComponent {...this.props} />;
     }
   }
 
-  const mapStateToProps = state => {
-    return { userId: state.userInfo.userId };
-  };
+  const mapDispatchToProps = dispatch => ({
+    getUserInfo: async token => {
+      try {
+        const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
+          method: 'get',
+          headers: {'Authorization': `Bearer ${token}`}
+        });
+        const json = await res.json();
+        const { success, userId, userName } = json;
+
+        if (success) {
+          dispatch(setUserInfo(userId, userName));
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
 
   return connect(
-    mapStateToProps
+    null,
+    mapDispatchToProps
   )(PrivateRoute);
 }

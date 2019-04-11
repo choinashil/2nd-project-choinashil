@@ -1,18 +1,11 @@
 import { connect } from 'react-redux';
-import { isFetching } from '../actions';
 import ResultMap from '../components/ResultMap';
 
 const mapStateToProps = state => {
-  return state;
+  const { baseLat, baseLng, details } = state.results;
+  return { baseLat, baseLng, details };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  // isFetching: boolean => {
-  //   dispatch(isFetching(boolean));
-  // }
-});
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(ResultMap);

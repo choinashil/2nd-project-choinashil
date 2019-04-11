@@ -1,29 +1,29 @@
 import * as types from './actionTypes';
 
-export function closeMenuTab() {
-  return {
-    type: types.CLOSE_MENU_TAB,
-  };
-}
-
 export function changeResultsList(courseInfo) {
   return {
     type: types.CHANGE_RESULTS_LIST,
-    courseInfo
+    payload: courseInfo
   };
 }
 
 export function changeUserFavorites(courseId) {
   return {
     type: types.CHANGE_USER_FAVORITES,
-    courseId
+    payload: courseId
+  };
+}
+
+export function closeMenuTab() {
+  return {
+    type: types.CLOSE_MENU_TAB,
   };
 }
 
 export function isFetching(boolean) {
   return {
     type: types.IS_FETCHING,
-    boolean
+    payload: boolean
   };
 }
 
@@ -48,89 +48,91 @@ export function resetUserInfo() {
 export function saveResultsList(results) {
   return {
     type: types.SAVE_RESULTS_LIST,
-    results
+    payload: results
   };
 }
 
 export function setBaseLatLng(lat, lng) {
   return {
     type: types.SET_BASE_LAT_LNG,
-    lat,
-    lng
+    payload: { lat, lng }
   };
 }
 
 export function setCoordinates(coordinates) {
   return {
     type: types.SET_COORDINATES,
-    coordinates
+    payload: coordinates
   };
 }
 
 export function setCourseDetails(data) {
   return {
     type: types.SET_COURSE_DETAILS,
-    data
+    payload: data
   };
 }
 
 export function setDistance(distance) {
   return {
     type: types.SET_DISTANCE,
-    distance
+    payload: distance
   };
 }
 
 export function setNewLatLng(lat, lng) {
   return {
     type: types.SET_NEW_LAT_LNG,
-    lat,
-    lng
+    payload: { lat, lng }
   };
 }
 
 export function setPage(page) {
   return {
     type: types.SET_PAGE,
-    page
+    payload: page
+  };
+}
+
+export function setSearchedAddress(address) {
+  return {
+    type: types.SET_SEARCHED_ADDRESS,
+    payload: address
   };
 }
 
 export function setUserAddress(address) {
   return {
     type: types.SET_USER_ADDRESS,
-    address
+    payload: address
   };
 }
 
 export function setUserDetails(nickName, photoUrl) {
   return {
     type: types.SET_USER_DETAILS,
-    nickName,
-    photoUrl
+    payload: { nickName, photoUrl }
   };
 }
 
 export function setUserFavorites(favorites) {
   return {
     type: types.SET_USER_FAVORITES,
-    favorites
+    payload: favorites
   };
 }
 
 export function setUserInfo(userId, userName) {
   return {
     type: types.SET_USER_INFO,
-    userId,
-    userName
+    payload: { userId, userName }
   };
 }
 
 export function setUserLocation(lat, lng) {
   return {
     type: types.SET_USER_LOCATION,
-    lat,
-    lng
+    payload: { lat, lng }
   };
 }
 

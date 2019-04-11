@@ -8,33 +8,23 @@ export default function(ComposedComponent) {
       this._checkTokenAndGetUserInfo();
     }
 
-    componentDidUpdate() {
-      this._checkTokenAndGetUserInfo();
-    }
-
     _checkTokenAndGetUserInfo() {
       const { getUserInfo } = this.props;
       const token = localStorage.getItem('access_token');
       if (token) {
-        console.log('auth route token aru');
         getUserInfo(token);
       }
     }
 
     render() {
-      console.log('auth route');
       return <ComposedComponent {...this.props} />;
     }
   }
 
-  const mapStateToProps = state => {
-    return { userId: state.userInfo.userId };
-  };
-
   const mapDispatchToProps = dispatch => ({
     getUserInfo: async token => {
       try {
-        const res = await fetch(`https://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
+        const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/verify`, {
           method: 'get',
           headers: {'Authorization': `Bearer ${token}`}
         });
@@ -44,15 +34,14 @@ export default function(ComposedComponent) {
         if (success) {
           dispatch(setUserInfo(userId, userName));
         }
-
       } catch (err) {
         console.log(err);
       }
-    }  
+    }
   });
 
   return connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )(AuthRoute);
 }

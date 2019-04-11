@@ -13,12 +13,12 @@ const initialState = {
 
 export default function userInfo(state = initialState, action) {
   const newState = JSON.parse(JSON.stringify(state));
-  const { address, courseId, favorites, userId, userName, nickName, photoUrl, lat, lng } = action;
+  const { payload } = action;
 
   switch(action.type) {
-    case types.CHANGE_USER_FAVORITES: 
+    case types.CHANGE_USER_FAVORITES:
       const targetIdx = newState.favorites.findIndex(course => {
-        return course._id === courseId;
+        return course._id === payload;
       });
       newState.favorites.splice(targetIdx, 1);
       return newState;
@@ -34,27 +34,27 @@ export default function userInfo(state = initialState, action) {
       newState.lng = 0;
       return newState;
 
-    case types.SET_USER_ADDRESS: 
-      newState.address = address;
+    case types.SET_USER_ADDRESS:
+      newState.address = payload;
       return newState;
 
-    case types.SET_USER_DETAILS: 
-      newState.nickName = nickName;
-      newState.photoUrl = photoUrl;
+    case types.SET_USER_DETAILS:
+      newState.nickName = payload.nickName;
+      newState.photoUrl = payload.photoUrl;
       return newState;
 
     case types.SET_USER_FAVORITES:
-      newState.favorites = favorites;
+      newState.favorites = payload;
       return newState;
 
     case types.SET_USER_INFO:
-      newState.userId = userId;
-      newState.userName = userName;
+      newState.userId = payload.userId;
+      newState.userName = payload.userName;
       return newState;
 
     case types.SET_USER_LOCATION:
-      newState.lat = lat;
-      newState.lng = lng;
+      newState.lat = payload.lat;
+      newState.lng = payload.lng;
       return newState;
 
     default:

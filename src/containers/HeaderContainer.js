@@ -3,7 +3,8 @@ import { showMenuTab } from '../actions';
 import Header from '../components/Header';
 
 const mapStateToProps = state => {
-  return state;
+  const { menuTabOpened } = state.display;
+  return { menuTabOpened };
 };
 
 const mapDispatchToProps = dispatch => ({
