@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { mapboxAccessToken } from '../config/mapboxToken';
 
 class ResultMap extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class ResultMap extends Component {
     const { details, baseLat, baseLng } = this.props;
     const { coordinates } = details;
 
-    mapboxgl.accessToken = mapboxAccessToken;
+    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
 
     const geojson = {
       "type": "FeatureCollection",

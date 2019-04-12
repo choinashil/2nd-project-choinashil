@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { mapboxAccessToken } from '../config/mapboxToken';
 
 class InputMap extends Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class InputMap extends Component {
     const { mapboxgl, turf } = global;
     const { lat, lng } = this.state;
 
-    mapboxgl.accessToken = mapboxAccessToken;
+    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
 
     this.map = new mapboxgl.Map({
       container: 'map',

@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import { isFetching, setUserInfo, closeMenuTab } from '../actions';
 import firebase from "firebase/app";
 import "firebase/auth";
-import { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId } from '../config/firebaseApiKey';
 import Login from '../components/Login';
+
+const { API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID } = process.env;
 
 const mapStateToProps = state => {
   const { isFetching } = state.display;
@@ -14,12 +15,12 @@ const mapDispatchToProps = dispatch => ({
   checkUserInDb: async () => {
     try {
       const config = {
-        apiKey, 
-        authDomain, 
-        databaseURL, 
-        projectId,
-        storageBucket,
-        messagingSenderId
+        API_KEY, 
+        AUTH_DOMAIN, 
+        DATABASE_URL, 
+        PROJECT_ID,
+        STORAGE_BUCKET,
+        MESSAGING_SENDER_ID
       };
 
       if (!firebase.apps.length) {
