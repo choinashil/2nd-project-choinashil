@@ -36,7 +36,7 @@ class Login extends Component {
 
     return (
       <Fragment>
-      { isFetching ? 
+      { isFetching ?
         <Indicator /> :
         <Fragment>
           <div className="Login-exit">

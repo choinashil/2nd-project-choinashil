@@ -13,9 +13,9 @@ const mapDispatchToProps = dispatch => ({
   checkUserInDb: async () => {
     try {
       const config = {
-        apiKey: process.env.REACT_APP_API_KEY, 
-        authDomain: process.env.REACT_APP_AUTH_DOMAIN, 
-        databaseURL: process.env.REACT_APP_DATABASE_URL, 
+        apiKey: process.env.REACT_APP_API_KEY,
+        authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+        databaseURL: process.env.REACT_APP_DATABASE_URL,
         projectId: process.env.REACT_APP_PROJECT_ID,
         storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
         messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
         userInfo = { facebookId, userName, userId };
       } else {
         userInfo = { facebookId, userName, photoUrl};
-      }      
+      }
 
       return userInfo;
 
@@ -76,8 +76,10 @@ const mapDispatchToProps = dispatch => ({
         })
       });
       const json = await res.json();
+      console.log('after sign in json', json);
+
       const { access_token } = json;
-      dispatch(isFetching(true));
+      dispatch(isFetching(false));
 
       console.log('after sign in request', access_token);
       return { token: access_token };
@@ -101,6 +103,8 @@ const mapDispatchToProps = dispatch => ({
         })
       });
       const json = await res.json();
+      console.log('after signup&in json', json);
+
       const { access_token } = json;
       console.log('after signup&in request', access_token);
 
@@ -111,7 +115,7 @@ const mapDispatchToProps = dispatch => ({
     } catch(err) {
       console.error(err);
       alert('문제가 발생했습니다. 다시 시도해주세요.');
-    } 
+    }
   }
 });
 
