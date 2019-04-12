@@ -25,7 +25,9 @@ class Login extends Component {
       access_token = await signUpAndSignIn(facebookId, userName, photoUrl);
     }
 
+    console.log('넘어온 access_token', access_token);
     const { token } = access_token;
+    console.log('check token', token);
     this._GoBackToPrevPageAfterLoggedIn(token, userId, userName);
   }
 
