@@ -16,7 +16,6 @@ class Login extends Component {
   async _login() {
     const { checkUserInDb, signIn, signUpAndSignIn } = this.props;
     const userInfo = await checkUserInDb();
-    console.log('check userInfo', userInfo);
     const { facebookId, userName, userId, photoUrl } = userInfo;
     let access_token;
 
@@ -26,9 +25,7 @@ class Login extends Component {
       access_token = await signUpAndSignIn(facebookId, userName, photoUrl);
     }
 
-    console.log('넘어온 access_token', access_token);
     const { token } = access_token;
-    console.log('check token', token);
     this._GoBackToPrevPageAfterLoggedIn(token, userId, userName);
   }
 

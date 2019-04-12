@@ -21,8 +21,6 @@ const mapDispatchToProps = dispatch => ({
         messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
       };
 
-      console.log('config', config);
-
       if (!firebase.apps.length) {
         firebase.initializeApp(config);
       }
@@ -30,8 +28,6 @@ const mapDispatchToProps = dispatch => ({
       const provider = new firebase.auth.FacebookAuthProvider();
       const result = await firebase.auth().signInWithPopup(provider);
       const { user } = result;
-
-      console.log('user', user);
 
       const facebookId = user.email;
       const userName = user.displayName.split(' ')[0];
@@ -44,7 +40,6 @@ const mapDispatchToProps = dispatch => ({
       });
       const json = await res.json();
       const { userId } = json;
-
       let userInfo;
 
       if (userId) {
@@ -53,12 +48,11 @@ const mapDispatchToProps = dispatch => ({
         userInfo = { facebookId, userName, photoUrl};
       }
 
-      console.log('userInfo after fetch auth check', userInfo);
       return userInfo;
 
     } catch(err) {
-      console.error(err);
-      alert('문제가 발생했습니다. 다시 시도해주세요.');
+      console.log(err);
+      alert('로그인 과정에서 문제가 발생했습니다. 다시 시도해주세요.');
     }
   },
   closeMenuTab: () => {
@@ -68,7 +62,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setUserInfo(userId, userName));
   },
   signIn: async (facebookId, userName, userId) => {
-    console.log('signin 들어오자마자', facebookId, userName, userId);
     try {
       dispatch(isFetching(true));
 
@@ -82,21 +75,17 @@ const mapDispatchToProps = dispatch => ({
         })
       });
       const json = await res.json();
-      console.log('after sign in json', json);
-
       const { access_token } = json;
       dispatch(isFetching(false));
 
-      console.log('after sign in request', access_token);
       return { token: access_token };
 
     } catch(err) {
       console.log(err);
-      alert('문제가 발생했습니다. 다시 시도해주세요.');
+      alert('로그인 과정에서 문제가 발생했습니다. 다시 시도해주세요.');
     }
   },
   signUpAndSignIn: async (facebookId, userName, photoUrl) => {
-    console.log('signupandsignin 들어오자마자', facebookId, userName, photoUrl);
     try {
       dispatch(isFetching(true));
 
@@ -110,18 +99,14 @@ const mapDispatchToProps = dispatch => ({
         })
       });
       const json = await res.json();
-      console.log('after signup&in json', json);
-
       const { access_token } = json;
-      console.log('after signup&in request', access_token);
-
       dispatch(isFetching(false));
 
-      return { access_token };
+      return { token: access_token };
 
     } catch(err) {
-      console.error(err);
-      alert('문제가 발생했습니다. 다시 시도해주세요.');
+      console.log(err);
+      alert('로그인 과정에서 문제가 발생했습니다. 다시 시도해주세요.');
     }
   }
 });
