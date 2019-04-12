@@ -16,6 +16,7 @@ class Login extends Component {
   async _login() {
     const { checkUserInDb, signIn, signUpAndSignIn } = this.props;
     const userInfo = await checkUserInDb();
+    console.log('check userInfo', userInfo);
     const { facebookId, userName, userId, photoUrl } = userInfo;
     let access_token;
 

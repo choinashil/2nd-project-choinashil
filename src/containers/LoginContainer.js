@@ -21,6 +21,8 @@ const mapDispatchToProps = dispatch => ({
         messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
       };
 
+      console.log('config', config);
+
       if (!firebase.apps.length) {
         firebase.initializeApp(config);
       }
@@ -28,6 +30,8 @@ const mapDispatchToProps = dispatch => ({
       const provider = new firebase.auth.FacebookAuthProvider();
       const result = await firebase.auth().signInWithPopup(provider);
       const { user } = result;
+
+      console.log('user', user);
 
       const facebookId = user.email;
       const userName = user.displayName.split(' ')[0];
@@ -49,6 +53,7 @@ const mapDispatchToProps = dispatch => ({
         userInfo = { facebookId, userName, photoUrl};
       }
 
+      console.log('userInfo after fetch auth check', userInfo);
       return userInfo;
 
     } catch(err) {
@@ -63,6 +68,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setUserInfo(userId, userName));
   },
   signIn: async (facebookId, userName, userId) => {
+    console.log('signin 들어오자마자', facebookId, userName, userId);
     try {
       dispatch(isFetching(true));
 
@@ -90,6 +96,7 @@ const mapDispatchToProps = dispatch => ({
     }
   },
   signUpAndSignIn: async (facebookId, userName, photoUrl) => {
+    console.log('signupandsignin 들어오자마자', facebookId, userName, photoUrl);
     try {
       dispatch(isFetching(true));
 
