@@ -4,7 +4,14 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import Login from '../components/Login';
 
-const { API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID } = process.env;
+const { 
+  REACT_APP_API_KEY, 
+  REACT_APP_AUTH_DOMAIN, 
+  REACT_APP_DATABASE_URL, 
+  REACT_APP_PROJECT_ID, 
+  REACT_APP_STORAGE_BUCKET, 
+  REACT_APP_MESSAGING_SENDER_ID 
+} = process.env;
 
 const mapStateToProps = state => {
   const { isFetching } = state.display;
@@ -15,12 +22,12 @@ const mapDispatchToProps = dispatch => ({
   checkUserInDb: async () => {
     try {
       const config = {
-        apiKey: API_KEY, 
-        authDomain: AUTH_DOMAIN, 
-        databaseURL: DATABASE_URL, 
-        projectId: PROJECT_ID,
-        storageBucket: STORAGE_BUCKET,
-        messagingSenderId: MESSAGING_SENDER_ID
+        apiKey: REACT_APP_API_KEY, 
+        authDomain: REACT_APP_AUTH_DOMAIN, 
+        databaseURL: REACT_APP_DATABASE_URL, 
+        projectId: REACT_APP_PROJECT_ID,
+        storageBucket: REACT_APP_STORAGE_BUCKET,
+        messagingSenderId: REACT_APP_MESSAGING_SENDER_ID
       };
 
       if (!firebase.apps.length) {

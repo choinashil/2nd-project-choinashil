@@ -12,7 +12,7 @@ class ResultMap extends Component {
     const { details, baseLat, baseLng } = this.props;
     const { coordinates } = details;
 
-    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     const geojson = {
       "type": "FeatureCollection",

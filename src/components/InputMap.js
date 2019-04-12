@@ -23,7 +23,7 @@ class InputMap extends Component {
     const { mapboxgl, turf } = global;
     const { lat, lng } = this.state;
 
-    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
     this.map = new mapboxgl.Map({
       container: 'map',
