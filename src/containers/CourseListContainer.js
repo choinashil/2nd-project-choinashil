@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
   toggleLikes: async (page, userId, courseId) => {
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/courses/${courseId}/like`, {
+      const res = await fetch(`https://nashu.me/api/users/${userId}/courses/${courseId}/like`, {
         method: 'get',
         headers: { 'Authorization': `Bearer ${token}` }
       });

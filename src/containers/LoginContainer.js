@@ -15,12 +15,12 @@ const mapDispatchToProps = dispatch => ({
   checkUserInDb: async () => {
     try {
       const config = {
-        API_KEY, 
-        AUTH_DOMAIN, 
-        DATABASE_URL, 
-        PROJECT_ID,
-        STORAGE_BUCKET,
-        MESSAGING_SENDER_ID
+        apiKey: API_KEY, 
+        authDomain: AUTH_DOMAIN, 
+        databaseURL: DATABASE_URL, 
+        projectId: PROJECT_ID,
+        storageBucket: STORAGE_BUCKET,
+        messagingSenderId: MESSAGING_SENDER_ID
       };
 
       if (!firebase.apps.length) {
@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
       const userName = user.displayName.split(' ')[0];
       const photoUrl = user.photoURL;
 
-      const res = await fetch('http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/check', {
+      const res = await fetch('https://nashu.me/api/auth/check', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ facebookId })
@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => ({
     try {
       dispatch(isFetching(true));
 
-      const res = await fetch('http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/login', {
+      const res = await fetch('https://nashu.me/api/auth/login', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -92,7 +92,7 @@ const mapDispatchToProps = dispatch => ({
     try {
       dispatch(isFetching(true));
 
-      const res = await fetch('http://running-course-app.eu-west-1.elasticbeanstalk.com/api/auth/sign-up', {
+      const res = await fetch('https://nashu.me/api/auth/sign-up', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
       dispatch(isFetching(true));
 
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/favorites`, {
+      const res = await fetch(`https://nashu.me/api/users/${userId}/favorites`, {
         method: 'get',
         headers: { 'Authorization': `Bearer ${token}` }
       });

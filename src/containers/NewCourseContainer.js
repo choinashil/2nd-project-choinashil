@@ -9,14 +9,14 @@ const mapStateToProps = state => {
   return { coordinates, distance, userId, userName };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   resetCourseHistory: () => {
     dispatch(resetCourseHistory());
   },
   saveNewCourse: async (userId, newCourseInfo) => {
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://running-course-app.eu-west-1.elasticbeanstalk.com/api/users/${userId}/new-course`, {
+      const res = await fetch(`https://nashu.me/api/users/${userId}/new-course`, {
         method: 'post',
         headers: {
           'Authorization': `Bearer ${token}`,
