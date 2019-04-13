@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import { resetCourseHistory, setNewLatLng } from '../actions';
+import { isFetching, resetCourseHistory, setNewLatLng } from '../actions';
 import NewCourse from '../components/NewCourse';
 
 const mapStateToProps = state => {
+  const { isFetching } = state.display;
   const { coordinates, distance } = state.course;
   const { userId, userName } = state.userInfo;
 
-  return { coordinates, distance, userId, userName };
+  return { coordinates, distance, isFetching, userId, userName };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -15,6 +16,8 @@ const mapDispatchToProps = dispatch => ({
   },
   saveNewCourse: async (userId, newCourseInfo) => {
     try {
+      dispatch(isFetching(true));
+
       const token = localStorage.getItem('access_token');
       const res = await fetch(`https://nashu.me/api/users/${userId}/new-course`, {
         method: 'post',
@@ -24,8 +27,12 @@ const mapDispatchToProps = dispatch => ({
         },
         body: JSON.stringify(newCourseInfo)
       });
+
       const json = await res.json();
-      return json.message;
+      dispatch(isFetching(false));
+
+      return json;
+
     } catch (err) {
       console.log(err);
     }
