@@ -5,7 +5,7 @@
 
 **RunMate**는 사용자가 추천하는 러닝 코스를 등록하고, 위치 기반으로 러닝 코스를 검색할 수 있는 어플리케이션입니다.
 
-<img height="800" alt="example" src="./runmate.gif">
+<img height="500" alt="example" src="./runmate.gif">
 
 ## Content
 - [Requirements](#Requirements)
