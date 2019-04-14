@@ -29,8 +29,6 @@ const mapDispatchToProps = dispatch => ({
       });
 
       const json = await res.json();
-      dispatch(isFetching(false));
-
       return json;
 
     } catch (err) {
