@@ -13,17 +13,21 @@
   width: 100%;
   height: 70vh;
   > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 55%;
     padding: 5%;
-    background-color: #476ab0;
+    background-color: #4267B2;
     border-radius: 3px;
     text-align: center;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1em;
     font-weight: 700;
     color: #fff;
-    > i {
-      margin-right: 5%;
+    > img {
+      width: 20px;
+      margin-right: 5px;
     }
   }
 }

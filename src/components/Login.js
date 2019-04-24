@@ -44,7 +44,7 @@ class Login extends Component {
           </div>
           <section className="Login-section">
             <div onClick={this._login.bind(this)}>
-              <i className="fab fa-facebook-f" />
+              <img src={require('../lib/flogo_RGB_HEX-144.png')} alt="login" />
               Login with Facebook
             </div>
           </section>
